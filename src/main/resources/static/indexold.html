@@ -1,0 +1,53 @@
+<html>
+<title>IMVU APP</title>
+<head>
+<script type="text/javascript" src="/static/js/app2.js" ></script>
+</head>
+
+<body>
+<h2>Welcome to spring boot</h2>
+
+<form id="myForm" name="myForm" onsubmit="AjaxFileUpload()">
+  <div>
+    <label for="userfile">Upload file:</label>
+    <input type="file" id="userfile" name="userfile">
+  </div>
+<input type="submit" value="Submit!">
+</form>
+
+<button>Click to get values from database</button>
+<!-- 
+
+<progress></progress>
+
+-->
+
+<script type="text/javascript">
+function AjaxFileUpload() {
+		
+    var file = document.getElementById("myForm");
+    //var file = fileInput;
+    var fd = new FormData();
+    fd.append("FileData", file);
+    if(file==null){
+    	 alert('please browse file');
+    } else {
+    	 var xhr = new XMLHttpRequest();
+    	    xhr.open("POST", '/test');
+    	    xhr.onreadystatechange = function () {
+    	        if (xhr.readyState == 4) {
+    	             alert('success');
+    	        }
+    	        else if (uploadResult == 'success')
+    	             alert('error');
+    	    };
+    	    xhr.setRequestHeader("Content-Type","multipart/form-data; boundary=HereGoes");
+    	    xhr.send(fd);
+    	    
+    	    alert('file send');
+    }
+}
+
+</script>
+</body>
+</html>
