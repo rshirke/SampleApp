@@ -2,57 +2,36 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Uploaded Page</title>
-<style>
-            label {
-                width:100px;
-                clear:left;
-                text-align:left;
-                padding-right:10px;
-            }
-            button {
-                margin: 40px;
-                width:100px;
-                text-align:center;
 
-            }
-
-            table {
-                border-collapse: collapse;
-
-
-            }
-
-            th {
-                background-color: grey;
-                width: 165px;
-
-                border: 1px solid black;
-
-            }
-
-            td {
-
-                width: 165px;
-                text-align: left;
-
-                border: 1px solid black;
-            }
-        </style>
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link> 
-				<script src="/static/js/app2.js" th:src="@{/js/app2.js}"></script>
+<link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet"></link>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+<script src="/static/js/app2.js" th:src="@{/js/app2.js}"></script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+	
+<script>
+        $(function(){
+          $("#table1").tablesorter();
+        });
+    </script>
 </head>
 <body>
 
-<h1>Spring Boot - Upload Status</h1>
+	<h1>Spring Boot - Upload Status</h1>
 
 
-<div>
-<h3>Please click to view the values of sample data</h3>
-<button id="loaddata" type="button">Load Data</button>
-</div>
-<div id="text1" align="center" > <b>Sample List</b></div>	 
+	<div>
+		<h3>Please click to view the values of sample data</h3>
+		<button id="loaddata" type="button">Load Data</button>
+	</div>
+	<div id="text1" align="center">
+		<b>Sample List</b>
+	</div>
 
- <script type="text/javascript" >
+	<script type="text/javascript">
  showData();
   
 </script>

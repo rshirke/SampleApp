@@ -25,20 +25,38 @@ function showData()
             var resultdiv = document.getElementById('text1');
 
             var tablecreation = document.createElement('TABLE');
+            tablecreation.id = 'table1';
+            tablecreation.className = 'tablesorter';
+            tablecreation.border = "2";
+            tablecreation.cellpadding = "0";
+            tablecreation.cellspacing = "1";
+            var tablehead = document.createElement('THEAD');
             var tablerow = document.createElement('TR');
+            tablerow.className = "tablesorter-headerRow";
             var tablehead1 = document.createElement('TH');
+            tablehead1.className = "tablesorter-header";
             var tabled1 = document.createTextNode('ID');
+            tabled1.className = "tablesorter-header-inner";
             var tablehead2 = document.createElement('TH');
-
+            tablehead2.className = "tablesorter-header";
             var tabled2 = document.createTextNode('First Name');
+            tabled2.className = "tablesorter-header-inner";
             var tablehead3 = document.createElement('TH');
+            tablehead3.className = "tablesorter-header";
             var tabled3 = document.createTextNode('Last Name');
+            tabled3.className = "tablesorter-header-inner";
             var tablehead4 = document.createElement('TH');
+            tablehead4.className = "tablesorter-header";
             var tabled4 = document.createTextNode('Date');
+            tabled4.className = "tablesorter-header-inner";
             var tablehead5 = document.createElement('TH');
+            tablehead5.className = "tablesorter-header";
             var tabled5 = document.createTextNode('Score');
+            tabled5.className = "tablesorter-header-inner";
             var tablehead6 = document.createElement('TH');
+            tablehead6.className = "tablesorter-header";
             var tabled6 = document.createTextNode('Weighing');
+            tabled6.className = "tablesorter-header-inner";
 
             tablehead1.appendChild(tabled1);
             tablehead2.appendChild(tabled2);
@@ -52,13 +70,15 @@ function showData()
             tablerow.appendChild(tablehead4);
             tablerow.appendChild(tablehead5);
             tablerow.appendChild(tablehead6);
-            tablecreation.appendChild(tablerow);
+            tablehead.appendChild(tablerow);
+            tablecreation.appendChild(tablehead);
             resultdiv.appendChild(tablecreation);
             
 
-						
+            	var tablehead = document.createElement('TBODY');
             for (var i=0;i<arr.length;i++)
             {
+            	
                 var tablerow1 = document.createElement('TR');
                 var tablehead1 = document.createElement('TD');
                 var tabled1 = document.createTextNode(arr[i].customerId);
@@ -87,11 +107,12 @@ function showData()
                 tablerow1.appendChild(tablehead4);
                 tablerow1.appendChild(tablehead5);
                 tablerow1.appendChild(tablehead6);
-                
-                tablecreation.appendChild(tablerow1);
-                resultdiv.appendChild(tablecreation);	
+                tablehead.appendChild(tablerow1);
 
             };
+            	
+            	tablecreation.appendChild(tablehead);
+            	resultdiv.appendChild(tablecreation);	
         }
 	}
 }
