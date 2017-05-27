@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
 <title>Uploaded Page</title>
+<head>
 
-<link href="http://mottie.github.io/tablesorter/css/theme.default.css" rel="stylesheet"></link>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-<script src="/static/js/app2.js" th:src="@{/js/app2.js}"></script>
-<script type="text/javascript"
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-	
-<script>
-        $(function(){
-          $("#table1").tablesorter();
-        });
-    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js"></script>
+<script src="/static/js/app3.js" th:src="@{/js/app3.js}"></script>
 </head>
-<body>
-
+<body ng-app="myapp">
+<div ng-controller="MyController" >
+    <button ng-click="myData.doClick()">Send AJAX Request</button>
 	<h1>Spring Boot - Upload Status</h1>
-
-
 	<div>
-		<h3>Please click to view the values of sample data</h3>
-		<button id="loaddata" type="button">Load Data</button>
-	</div>
+      Search: <input type="text" ng-model="test" />
+  </div>
+  <p>
+        Sort by:
+        <select ng-model="test2">
+          <option value="firstname">FirstName</option>
+          <option value="score">Score</option>
+        </select>
+  </p>
 	<div id="text1" align="center">
 		<b>Sample List</b>
 	</div>
-
-	<script type="text/javascript">
- showData();
-  
-</script>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Customer Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Date</th>
+      <th>Score</th>
+      <th>Weighing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="data in req_data  | filter: test | orderBy: test2">
+      <td>{{data.id}}</td>
+      <td>{{data.customerId}}</td>
+      <td>{{data.firstname}}</td>
+      <td>{{data.lastname}}</td>
+      <td>{{data.date.monthValue +"-" + data.date.dayOfMonth + "-" + data.date.year + " " + data.date.hour + ":" + data.date.minute + ":" + data.date.second}}</td>
+      <td>{{data.score}}</td>
+      <td>{{data.weighing}}</td>
+    </tr>
+  </tbody>
+</table>
+      
+      
+</div>
 </body>
 </html>
